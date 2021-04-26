@@ -1,7 +1,9 @@
 package com.jcrogel;
-import javafx.event.Event;
+
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
+
+import javafx.scene.control.Label;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -18,6 +20,11 @@ public class Controller {
 
     @FXML // fx:id="imageview";
             ImageView imageview;
+
+    @FXML
+    Label label;
+
+
     HashMap<String, String> credentials = new HashMap<String, String>();
 
 
@@ -29,14 +36,19 @@ public class Controller {
 
     }
 
+    @FXML
     public void load(){
         try {
+
             AccountSettings settings = twitter.getAccountSettings();
             String screen_name = settings.getScreenName();
             User u = twitter.users().showUser(screen_name);
             String url = u.getOriginalProfileImageURL();
             Image image = new Image(url);
             imageview.setImage(image);
+            label.setText(screen_name);
+
+
 
         } catch (TwitterException e) {
             e.printStackTrace();

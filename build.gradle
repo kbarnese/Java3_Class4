@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id 'org.openjfx.javafxplugin' version '0.0.7'
+    id 'application'
+}
+
+group 'com.jcrogel'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'junit:junit:4.12'
+    compile group: 'org.twitter4j', name: 'twitter4j-core', version: '4.0.7'
+}
+
+javafx{
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
+mainClassName = 'com.jcrogel.Main'
